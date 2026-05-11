@@ -1,5 +1,5 @@
 ---
-name: Gaetano Cardinale
+name: Gaetano Luigi Matteo Cardinale
 title: Senior .NET / Software Architect · Fractional CTO
 location: Reggio Calabria, Italia — remoto / ibrido leggero
 email: gcardinale@protonmail.com
@@ -8,13 +8,13 @@ phoneHref: "tel:+393277549296"
 linkedin: https://www.linkedin.com/in/gaetano-cardinale-81350a17a/
 # github: omesso di proposito — i nomi dei repo pubblici rivelerebbero clienti/datori (vedi CLAUDE.md, vincolo riservatezza)
 # nessun CV pubblico scaricabile: il CV si fornisce su richiesta via email. I CONTATTI devono essere ben visibili (hero + footer + sezione dedicata).
-ogTitle: Gaetano Cardinale — Senior .NET / Software Architect
+ogTitle: Gaetano Luigi Matteo Cardinale — Senior .NET / Software Architect
 ogDescription: 23 anni di sviluppo software. C# 13 / .NET 10, ASP.NET Core, Blazor, EF Core, Azure, Kubernetes. Architetture enterprise, piattaforme IoT, legal-tech, healthtech.
 ---
 
 ## Hero
 
-**Gaetano Cardinale**
+**Gaetano Luigi Matteo Cardinale**
 Senior .NET / Software Architect · Fractional CTO
 
 Costruisco e mantengo software enterprise da 23 anni: gestionali modulari multi-database, piattaforme IoT, sistemi legal-tech e healthtech — dall'architettura al codice all'infrastruttura.

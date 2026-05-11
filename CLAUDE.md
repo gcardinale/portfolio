@@ -1,11 +1,11 @@
-# Portfolio personale — Gaetano Cardinale
+# Portfolio personale — Gaetano Luigi Matteo Cardinale
 
 Sito vetrina personale per recruiter / CTO. Linkabile da CV, email candidature, LinkedIn, Indeed.
 
 - **Dominio:** `gaetanocardinale.dev` (HTTPS forzato, TLD developer)
 - **Stack:** Astro (sito statico) + **GitHub Pages** (hosting gratuito, deploy via GitHub Actions, dominio custom). *(Cloudflare Pages è un'alternativa equivalente — scelto GitHub Pages per immediatezza, repo già su GitHub.)*
 - **Niente:** backend, database, form di contatto con server, CMS, login, animazioni gratuite, JS pesante, tracker invasivi. Contatti via `mailto:` / `tel:` puri.
-- **Owner:** Gaetano Cardinale — tel +39 327 754 9296 · gcardinale@protonmail.com · https://www.linkedin.com/in/gaetano-cardinale-81350a17a/
+- **Owner:** Gaetano Luigi Matteo Cardinale (nome completo; nei contatti/firma email va bene anche "Gaetano Cardinale") — tel +39 327 754 9296 · gcardinale@protonmail.com · https://www.linkedin.com/in/gaetano-cardinale-81350a17a/
 
 ## Cosa è già pronto vs cosa manca
 
