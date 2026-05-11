@@ -7,37 +7,42 @@ Sito vetrina personale per recruiter / CTO. Linkabile da CV, email candidature, 
 - **Niente:** backend, database, form di contatto con server, CMS, login, animazioni gratuite, JS pesante, tracker invasivi. Contatti via `mailto:` / `tel:` puri.
 - **Owner:** Gaetano Cardinale — tel +39 327 754 9296 · gcardinale@protonmail.com · https://www.linkedin.com/in/gaetano-cardinale-81350a17a/
 
-## Cosa è già pronto (in questo repo) vs cosa manca
+## Cosa è già pronto vs cosa manca
 
-**Pronto** — i contenuti in `content/`:
-- `content/home.md` — copy della home (hero, pitch, blocchi competenze, CTA)
-- `content/about.md` — bio breve
-- `content/projects/*.md` — 4 case study (Alcolock 4.0, Argo 2.0, BI-MOB, Medika), frontmatter + corpo
+**Pronto (committato):**
+- Contenuti in `content/`: `home.md` (copy home), `about.md` (bio), `projects/*.md` (4 case study **anonimizzati**, slug neutri).
+- **Scaffold Astro funzionante** (build verificata, 5 pagine generate):
+  - `package.json` (Astro 5), `package-lock.json`, `tsconfig.json`, `astro.config.mjs` (`site` + `base: '/portfolio/'`)
+  - `src/content/config.ts` — collection `projects` via `glob` loader che legge `./content/projects/**/*.md` (i contenuti restano fuori da `src/`)
+  - `src/layouts/Base.astro` — head, OpenGraph, CSS globale (palette sobria, responsive)
+  - `src/components/SiteFooter.astro` — footer con contatti
+  - `src/pages/index.astro` — home: hero + chi sono + competenze + griglia progetti + esperienza + contatti
+  - `src/pages/progetti/[slug].astro` — pagina case study (meta + stack + corpo Markdown renderizzato)
+  - `public/favicon.svg`
+  - `.github/workflows/deploy.yml` — build + deploy su GitHub Pages
+- Build locale: `npm install && npm run build` → `dist/` con `index.html` + 4 pagine `progetti/<slug>/`. Tutti i link rispettano `import.meta.env.BASE_URL`. Zero nomi di azienda nell'HTML generato.
 
-**Da fare** (sviluppatore):
-1. `npm create astro@latest` in questo repo (template minimale o blog), TypeScript opzionale
-2. Configurare una **content collection `projects`** che legga `content/projects/*.md` (o spostare i file in `src/content/projects/` e adeguare gli import) — schema frontmatter sotto
-3. Layout + componenti: `BaseLayout` (head, OpenGraph, font), `Home` (hero, about, griglia card progetti, contatti, footer), `ProjectPage` (template case study: titolo, meta, sezioni)
-4. Stile: pulito, sobrio, responsive. Dark mode opzionale. Una palette, niente fronzoli. (Tailwind o CSS vanilla — scelta sviluppatore)
-5. **OpenGraph + immagine preview** (`/og.png` ~1200×630) — il link deve fare bella figura incollato su LinkedIn/Indeed/email. `<title>` tipo "Gaetano Cardinale — Senior .NET / Software Architect"
-6. `favicon.svg`, `robots.txt`, `sitemap` (integration `@astrojs/sitemap`)
-7. **Niente CV pubblico scaricabile** (scelta dell'owner): nessun `public/cv.pdf`, nessun pulsante "Scarica CV". Al suo posto i **contatti devono essere molto visibili** — email (`mailto:`), telefono (`tel:`), LinkedIn — in **hero**, in **footer** e in una **sezione "Contatti" dedicata**. Messaggio: "CV completo su richiesta".
-8. **Deploy su GitHub Pages — in due fasi (la Fase 1 va online subito, senza aspettare il DNS):**
+**Da fare / da rifinire (sviluppatore, quando vuole):**
+- Restyling/polish: tipografia, dark mode opzionale, micro-interazioni — è un layout volutamente minimale, da migliorare a piacere senza toccare `content/`.
+- `og.png` (~1200×630) reale + meta `og:image` nel `Base.astro` (ora c'è solo `og:title`/`og:description`).
+- `robots.txt`, sitemap (`@astrojs/sitemap`), canonical link.
+- Eventuale pagina `/chi-sono` separata (ora il "chi sono" è una sezione della home; `content/about.md` è la copy sorgente).
+- Nuovi case study: aggiungere un `.md` in `content/projects/` con lo schema sotto (es. ATI Enna / settore pubblico, Wevoz / settore tech ASR, ecc.) — **sempre anonimi, solo settore**.
 
-   **Fase 1 — pubblicazione immediata su `https://<username>.github.io/portfolio/`** (presumibilmente `gcardinale` — VERIFICARE lo username):
-   - `astro.config.mjs`: `site: 'https://gcardinale.github.io'`, `base: '/portfolio'`
-   - **NIENTE** `public/CNAME` in questa fase
-   - Workflow `.github/workflows/deploy.yml` con `withastro/action` + `actions/deploy-pages` (build su push a `main` → pubblica `dist`)
-   - Su GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**
-   - ⚠️ I link interni devono rispettare il `base`: usare `import.meta.env.BASE_URL` (o `<base href={...}>` / helper) ovunque, **mai** path assoluti tipo `/projects/...` hardcoded — così il passaggio alla Fase 2 è indolore.
-   - Online in pochi minuti. URL da usare subito (anche nella mail Euris): `https://gcardinale.github.io/portfolio/`
+## Deploy su GitHub Pages — in due fasi (Fase 1 va online subito, senza aspettare il DNS)
 
-   **Fase 2 — dominio custom `gaetanocardinale.dev`** (quando comodo, anche giorni dopo):
-   - `astro.config.mjs`: `site: 'https://gaetanocardinale.dev'`, `base: '/'`
-   - aggiungere `public/CNAME` con una sola riga: `gaetanocardinale.dev`
-   - Su GitHub: **Settings → Pages → Custom domain: `gaetanocardinale.dev`** + spuntare "Enforce HTTPS"
-   - DNS del dominio: per l'apex i 4 record **A** di GitHub Pages (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) + i relativi **AAAA**; in alternativa, se il DNS è su Cloudflare, un **CNAME** verso `gcardinale.github.io` (CNAME flattening). Propagazione ~minuti/ore.
-   - poi: aggiornare l'URL nella mail Euris e su LinkedIn/Indeed da `gcardinale.github.io/portfolio` a `gaetanocardinale.dev`
+**Fase 1 — già configurata: pubblicazione su `https://<username>.github.io/portfolio/`** (presumibilmente `gcardinale` — VERIFICARE lo username; se diverso, cambiare `site` in `astro.config.mjs`):
+- `astro.config.mjs`: `site: 'https://gcardinale.github.io'`, `base: '/portfolio/'` (trailing slash → `import.meta.env.BASE_URL === '/portfolio/'`)
+- niente `public/CNAME` in questa fase
+- workflow `.github/workflows/deploy.yml` già presente (`withastro/action` + `actions/deploy-pages`)
+- Su GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions** → al primo push su `main` parte il build → sito live in pochi minuti su `https://gcardinale.github.io/portfolio/`
+
+**Fase 2 — dominio custom `gaetanocardinale.dev`** (quando comodo):
+- `astro.config.mjs`: `site: 'https://gaetanocardinale.dev'`, `base: '/'`
+- aggiungere `public/CNAME` con una riga: `gaetanocardinale.dev`
+- Su GitHub: **Settings → Pages → Custom domain: `gaetanocardinale.dev`** + spuntare "Enforce HTTPS"
+- DNS: apex → 4 record **A** GitHub Pages (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) + relativi **AAAA**; oppure, se DNS su Cloudflare, **CNAME** verso `gcardinale.github.io` (CNAME flattening)
+- poi: aggiornare l'URL nella mail Euris e su LinkedIn/Indeed da `gcardinale.github.io/portfolio` a `gaetanocardinale.dev`
 9. *(dopo)* aggiungere il case study **Wevoz — Real-time ASR** quando disponibili le metriche; valutare una versione EN del sito
 
 ## Schema frontmatter dei case study (`content/projects/*.md`)

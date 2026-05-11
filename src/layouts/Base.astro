@@ -1,0 +1,121 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <style is:global>
+      :root {
+        --bg: #ffffff;
+        --bg-alt: #f8fafc;
+        --text: #1e293b;
+        --heading: #0f172a;
+        --muted: #64748b;
+        --accent: #2563eb;
+        --accent-soft: #eff6ff;
+        --border: #e2e8f0;
+        --maxw: 880px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.6;
+        font-size: 17px;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      h1, h2, h3 { color: var(--heading); line-height: 1.25; }
+      .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+      .section { padding: 56px 0; }
+      .section + .section { border-top: 1px solid var(--border); }
+      .section--alt { background: var(--bg-alt); }
+      .eyebrow {
+        text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem;
+        font-weight: 700; color: var(--accent); margin: 0 0 14px;
+      }
+      /* hero */
+      .hero { padding: 72px 0 56px; }
+      .hero h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin: 0 0 6px; letter-spacing: -0.02em; }
+      .hero .role { font-size: 1.15rem; font-weight: 600; color: var(--accent); margin: 0 0 18px; }
+      .hero .tagline { font-size: 1.1rem; color: var(--text); margin: 0 0 26px; max-width: 640px; }
+      .contacts { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 14px; }
+      .contacts a {
+        display: inline-flex; align-items: center; gap: 7px;
+        background: var(--accent); color: #fff; padding: 9px 16px; border-radius: 999px;
+        font-weight: 600; font-size: 0.95rem;
+      }
+      .contacts a:hover { background: #1d4ed8; text-decoration: none; }
+      .contacts a.ghost { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+      .contacts a.ghost:hover { background: var(--accent-soft); }
+      .note { font-size: 0.9rem; color: var(--muted); margin: 6px 0 0; }
+      /* generic prose */
+      .prose p { margin: 0 0 16px; }
+      .prose h2 { font-size: 1.4rem; margin: 32px 0 12px; }
+      .prose h3 { font-size: 1.1rem; margin: 24px 0 8px; }
+      .prose ul { margin: 0 0 16px; padding-left: 1.2em; }
+      .prose li { margin: 4px 0; }
+      .prose code { background: var(--bg-alt); padding: 2px 5px; border-radius: 4px; font-size: 0.92em; }
+      /* skills */
+      .skills { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+      .skills h3 { font-size: 0.95rem; margin: 0 0 8px; color: var(--accent); }
+      .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+      .pill {
+        background: #fff; border: 1px solid var(--border); color: var(--text);
+        padding: 3px 9px; border-radius: 6px; font-size: 0.85rem;
+      }
+      .section--alt .pill { background: #fff; }
+      /* experience */
+      .exp { list-style: none; margin: 0; padding: 0; }
+      .exp li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+      .exp li:last-child { border-bottom: none; }
+      .exp .when { color: var(--muted); font-size: 0.9rem; font-weight: 600; padding-top: 2px; }
+      .exp .what strong { color: var(--heading); display: block; }
+      .exp .what span { color: var(--muted); font-size: 0.95rem; }
+      @media (max-width: 560px) { .exp li { grid-template-columns: 1fr; gap: 2px; } }
+      /* project cards */
+      .cards { display: grid; gap: 18px; }
+      .card {
+        border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; background: #fff;
+        transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+      }
+      .card:hover { border-color: var(--accent); box-shadow: 0 6px 24px rgba(15,23,42,.07); transform: translateY(-2px); }
+      .card a.card-link { color: inherit; text-decoration: none; display: block; }
+      .card h3 { margin: 0 0 4px; font-size: 1.2rem; }
+      .card .meta { color: var(--muted); font-size: 0.88rem; margin: 0 0 10px; }
+      .card .summary { margin: 0 0 14px; color: var(--text); }
+      .card .more { color: var(--accent); font-weight: 600; font-size: 0.92rem; }
+      /* project page */
+      .backlink { display: inline-block; margin: 0 0 8px; font-size: 0.92rem; }
+      .project-meta { color: var(--muted); font-size: 0.95rem; margin: 4px 0 18px; }
+      .project-stack { margin: 0 0 28px; }
+      /* footer */
+      footer.site { background: var(--heading); color: #cbd5e1; padding: 36px 0; font-size: 0.95rem; }
+      footer.site a { color: #fff; }
+      footer.site .contacts a { background: #1e293b; }
+      footer.site .contacts a:hover { background: #334155; }
+      footer.site .small { color: #94a3b8; font-size: 0.85rem; margin-top: 14px; }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

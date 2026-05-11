@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const base = import.meta.env.BASE_URL;
+const { title, role, period, sector, status, summary, stack } = project.data;
+---
+<Base title={`${title} — Gaetano Cardinale`} description={summary}>
+  <header class="hero" style="padding:48px 0 28px;">
+    <div class="wrap">
+      <a class="backlink" href={base}>← Tutti i progetti</a>
+      <h1 style="font-size:clamp(1.6rem,4vw,2.2rem);">{title}</h1>
+      <p class="project-meta">{role} · {period} · {sector} · {status}</p>
+      <div class="project-stack pills">
+        {stack.map((s: string) => <span class="pill">{s}</span>)}
+      </div>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap prose">
+      <Content />
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <p>Vuoi approfondire questo caso o parlarne? <a href="mailto:gcardinale@protonmail.com">gcardinale@protonmail.com</a> · <a href="tel:+393277549296">+39 327 754 9296</a></p>
+      <p class="note"><a href={base}>← Torna ai progetti</a></p>
+    </div>
+  </section>
+
+  <SiteFooter />
+</Base>

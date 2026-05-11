@@ -1,0 +1,137 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL; // '/portfolio/' in fase 1, '/' con dominio custom
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Copy della home — sorgente di riferimento anche in /content/home.md (vedi CLAUDE.md).
+const competenze: { titolo: string; voci: string[] }[] = [
+  { titolo: 'Backend .NET', voci: ['C# 13', '.NET 10', 'ASP.NET Core MVC', 'Blazor (Server + WASM)', 'Entity Framework Core / LINQ', 'OData', 'Hangfire', 'API REST (Swagger/OpenAPI)'] },
+  { titolo: 'Database', voci: ['SQL Server', 'MySQL / MariaDB', 'Redis', 'SQLite', 'schema design, query tuning', 'calcoli lato DB (stored functions, trigger)'] },
+  { titolo: 'Cloud & Platform', voci: ['Azure (Container Apps, IoT Hub, Entra ID, Key Vault, Blob, Face API)', 'IaC (Bicep)', 'Kubernetes self-hosted', 'Docker'] },
+  { titolo: 'Architettura', voci: ['Modular monolith', 'Clean Architecture', 'CQRS', 'DDD', '4-layer per modulo', 'multi-tenant', 'event-driven'] },
+  { titolo: 'AI / LLM nel ciclo di sviluppo', voci: ['Claude / Anthropic API', 'MCP', 'analisi, code review, documentazione', 'ML in produzione (classificazione testuale, fine-tuning vision)'] },
+  { titolo: 'Altro', voci: ['Flutter', 'Xamarin / MAUI', 'Node.js / TypeScript', 'firma digitale eIDAS', 'GDPR / NIS2 by design', 'CI/CD (GitHub Actions, Azure DevOps)', 'Agile (Scrum / Kanban)', 'inglese tecnico'] },
+];
+
+const esperienza: [string, string, string][] = [
+  ['2025 – oggi', 'Software & Platform Engineer', 'settore automotive / telematica veicolare — piattaforma Fleet Management & IoT'],
+  ['2019 – oggi', 'Software Architect (freelance)', 'associazione di tutela dei consumatori — piattaforma legal-tech'],
+  ['2023 – 2025', 'IT Manager & Software Architect', 'settore trasporti e logistica — Azure, Blazor, piattaforma enterprise'],
+  ['2023 – 2025', 'Software & Infrastructure Architect (freelance)', 'settore sanitario — piattaforma SaaS di telemedicina, Kubernetes'],
+  ['2020 – 2023', 'ML Engineer & Software Engineer (freelance)', 'settore tech — ASR realtime, mobile, infrastruttura mail'],
+  ['2016 – 2023', 'Fondatore & Direttore', 'ISP wireless territoriale — network engineering, RADIUS, BGP/OSPF'],
+  ['2002 – 2016', 'Consulente IT indipendente', 'sviluppo software, networking, Pubblica Amministrazione'],
+];
+
+const about = [
+  'Sviluppo software dal 2002. Ho iniziato come consulente indipendente su progetti eterogenei — sviluppo web, network engineering, Pubblica Amministrazione — ho fondato e diretto per sette anni un ISP wireless territoriale, e negli ultimi anni mi sono concentrato su sviluppo backend .NET e architettura di sistema.',
+  'Oggi lavoro principalmente in C# / .NET su soluzioni enterprise: gestionali modulari multi-database, piattaforme IoT con integrazione hardware reale, sistemi legal-tech con firma digitale e ML in produzione, piattaforme SaaS in ambito sanitario. Mi muovo lungo tutta la filiera — analisi, architettura, codice, database, infrastruttura cloud, mobile, rilascio — e tengo il codice testabile e documentato per default.',
+  'Lavoro in contesti Agile, con esperienza diretta sia lato azienda sia come libero professionista su mandati continuativi (incluso un ruolo di Fractional CTO). Dal 2024 uso quotidianamente strumenti AI/LLM come acceleratore nel ciclo di sviluppo, e ho portato in produzione modelli ML "classici" e fine-tuning di modelli vision.',
+  'Vivo a Reggio Calabria e lavoro da remoto (o ibrido leggero). Mi interessano ruoli — da dipendente o in consulenza — su prodotto, stack moderno, con autonomia tecnica.',
+];
+
+const pageTitle = 'Gaetano Cardinale — Senior .NET / Software Architect';
+const pageDesc = '23 anni di sviluppo software. C# 13 / .NET 10, ASP.NET Core, Blazor, EF Core, Azure, Kubernetes. Architetture enterprise, piattaforme IoT, legal-tech, healthtech.';
+---
+<Base title={pageTitle} description={pageDesc}>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <h1>Gaetano Cardinale</h1>
+      <p class="role">Senior .NET / Software Architect · Fractional CTO</p>
+      <p class="tagline">
+        Costruisco e mantengo software enterprise da 23 anni: gestionali modulari multi-database,
+        piattaforme IoT, sistemi legal-tech e healthtech — dall'architettura al codice all'infrastruttura.
+      </p>
+      <div class="contacts">
+        <a href="mailto:gcardinale@protonmail.com">✉ gcardinale@protonmail.com</a>
+        <a href="tel:+393277549296">☎ +39 327 754 9296</a>
+        <a class="ghost" href="https://www.linkedin.com/in/gaetano-cardinale-81350a17a/" target="_blank" rel="noopener">in LinkedIn</a>
+      </div>
+      <p class="note">CV completo disponibile su richiesta — scrivimi e te lo invio.</p>
+    </div>
+  </header>
+
+  <!-- CHI SONO -->
+  <section class="section">
+    <div class="wrap prose">
+      <p class="eyebrow">Chi sono</p>
+      {about.map((p) => <p>{p}</p>)}
+    </div>
+  </section>
+
+  <!-- COMPETENZE -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <p class="eyebrow">Competenze</p>
+      <div class="skills">
+        {competenze.map((c) => (
+          <div>
+            <h3>{c.titolo}</h3>
+            <div class="pills">{c.voci.map((v) => <span class="pill">{v}</span>)}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGETTI -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Progetti selezionati</p>
+      <p class="note" style="margin-bottom:20px;">Per riservatezza i nomi dei committenti non sono riportati: si indica il settore.</p>
+      <div class="cards">
+        {projects.map((p) => (
+          <article class="card">
+            <a class="card-link" href={`${base}progetti/${p.id}/`}>
+              <h3>{p.data.title}</h3>
+              <p class="meta">{p.data.sector} · {p.data.period} · {p.data.role}</p>
+              <p class="summary">{p.data.summary}</p>
+              <div class="pills" style="margin-bottom:14px;">
+                {p.data.stack.slice(0, 6).map((s) => <span class="pill">{s}</span>)}
+              </div>
+              <span class="more">Leggi il caso →</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPERIENZA -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <p class="eyebrow">Esperienza</p>
+      <ul class="exp">
+        {esperienza.map(([when, what, where]) => (
+          <li>
+            <span class="when">{when}</span>
+            <span class="what"><strong>{what}</strong><span>{where}</span></span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Contatti</p>
+      <p>Per qualsiasi confronto — opportunità da dipendente o in consulenza, scambio tecnico — scrivimi:</p>
+      <div class="contacts">
+        <a href="mailto:gcardinale@protonmail.com">✉ gcardinale@protonmail.com</a>
+        <a href="tel:+393277549296">☎ +39 327 754 9296</a>
+        <a class="ghost" href="https://www.linkedin.com/in/gaetano-cardinale-81350a17a/" target="_blank" rel="noopener">in LinkedIn</a>
+      </div>
+      <p class="note">CV completo su richiesta.</p>
+    </div>
+  </section>
+
+  <SiteFooter />
+</Base>

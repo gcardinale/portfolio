@@ -4,21 +4,24 @@ Sito statico personale (Astro + Cloudflare Pages). Vedi **`CLAUDE.md`** per brie
 
 ## Stato
 
-- ✅ Contenuti pronti in `content/` (home, about, 4 case study)
-- ⬜ Scaffold Astro, layout/componenti, stile, OpenGraph, deploy → da fare (vedi `CLAUDE.md` § "Da fare")
+- ✅ Contenuti in `content/` (home, about, 4 case study anonimizzati)
+- ✅ Scaffold Astro funzionante (layout, home, pagina case study, CSS, workflow GitHub Pages) — build verificata
+- ⬜ Polish/restyling, `og.png`, sitemap/robots, nuovi case study — vedi `CLAUDE.md`
 
-## Sviluppo (una volta scaffoldato Astro)
+## Sviluppo
 
 ```bash
 npm install
-npm run dev      # http://localhost:4321
+npm run dev      # http://localhost:4321/portfolio/
 npm run build    # output in dist/
 npm run preview
 ```
 
 ## Deploy
 
-**GitHub Pages** via GitHub Actions (`.github/workflows/deploy.yml` con `withastro/action`). Su GitHub: Settings → Pages → Source = "GitHub Actions"; Custom domain = `gaetanocardinale.dev` (+ Enforce HTTPS). Nel repo: `public/CNAME` = `gaetanocardinale.dev`, e in `astro.config.mjs` → `site: 'https://gaetanocardinale.dev'`, `base: '/'`. Configurare il DNS del dominio verso GitHub Pages (CNAME → `gcardinale.github.io`).
+**Fase 1 (configurata):** GitHub Pages via GitHub Actions — pushare `main`, poi su GitHub → Settings → Pages → Source = "GitHub Actions" → sito live su `https://<username>.github.io/portfolio/` (`astro.config.mjs`: `site: 'https://gcardinale.github.io'`, `base: '/portfolio/'`).
+
+**Fase 2 (dominio custom):** cambiare in `astro.config.mjs` → `site: 'https://gaetanocardinale.dev'`, `base: '/'`; aggiungere `public/CNAME` = `gaetanocardinale.dev`; su GitHub → Pages → Custom domain + Enforce HTTPS; DNS del dominio verso GitHub Pages (A/AAAA records, oppure CNAME → `gcardinale.github.io` su Cloudflare). Dettagli in `CLAUDE.md`.
 
 ## Contenuti
 
