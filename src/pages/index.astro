@@ -15,11 +15,12 @@ const competenze: { titolo: string; voci: string[] }[] = [
   { titolo: 'Database', voci: ['SQL Server', 'MySQL / MariaDB', 'Redis', 'SQLite', 'schema design, query tuning', 'calcoli lato DB (stored functions, trigger)'] },
   { titolo: 'Cloud & Platform', voci: ['Azure (Container Apps, IoT Hub, Entra ID, Key Vault, Blob, Face API)', 'IaC (Bicep)', 'Kubernetes self-hosted', 'Docker'] },
   { titolo: 'Architettura', voci: ['Modular monolith', 'Clean Architecture', 'CQRS', 'DDD', '4-layer per modulo', 'multi-tenant', 'event-driven'] },
-  { titolo: 'AI / LLM nel ciclo di sviluppo', voci: ['Claude / Anthropic API', 'MCP', 'analisi, code review, documentazione', 'ML in produzione (classificazione testuale, fine-tuning vision)'] },
+  { titolo: 'AI / LLM', voci: ['Claude / Anthropic API', 'MCP', 'analisi, code review, documentazione', 'ML in produzione (classificazione testuale, fine-tuning vision)'] },
   { titolo: 'Altro', voci: ['Flutter', 'Xamarin / MAUI', 'Node.js / TypeScript', 'firma digitale eIDAS', 'GDPR / NIS2 by design', 'CI/CD (GitHub Actions, Azure DevOps)', 'Agile (Scrum / Kanban)', 'inglese tecnico'] },
 ];
 
 const esperienza: [string, string, string][] = [
+  ['2026 – oggi', 'Fractional CTO (consulente)', 'ente partecipato pubblico, settore utility — consulenza tecnica continuativa, sicurezza e dati'],
   ['2025 – oggi', 'Software & Platform Engineer', 'settore automotive / telematica veicolare — piattaforma Fleet Management & IoT'],
   ['2019 – oggi', 'Software Architect (freelance)', 'associazione di tutela dei consumatori — piattaforma legal-tech'],
   ['2023 – 2025', 'IT Manager & Software Architect', 'settore trasporti e logistica — Azure, Blazor, piattaforma enterprise'],
@@ -30,36 +31,83 @@ const esperienza: [string, string, string][] = [
 ];
 
 const about = [
-  'Sviluppo software dal 2002. Ho iniziato come consulente indipendente su progetti eterogenei — sviluppo web, network engineering, Pubblica Amministrazione — ho fondato e diretto per sette anni un ISP wireless territoriale, e negli ultimi anni mi sono concentrato su sviluppo backend .NET e architettura di sistema.',
-  'Oggi lavoro principalmente in C# / .NET su soluzioni enterprise: gestionali modulari multi-database, piattaforme IoT con integrazione hardware reale, sistemi legal-tech con firma digitale e ML in produzione, piattaforme SaaS in ambito sanitario. Mi muovo lungo tutta la filiera — analisi, architettura, codice, database, infrastruttura cloud, mobile, rilascio — e tengo il codice testabile e documentato per default.',
-  'Lavoro in contesti Agile, con esperienza diretta sia lato azienda sia come libero professionista su mandati continuativi (incluso un ruolo di Fractional CTO). Dal 2024 uso quotidianamente strumenti AI/LLM come acceleratore nel ciclo di sviluppo, e ho portato in produzione modelli ML "classici" e fine-tuning di modelli vision.',
-  'Vivo a Reggio Calabria e lavoro da remoto (o ibrido leggero). Mi interessano ruoli — da dipendente o in consulenza — su prodotto, stack moderno, con autonomia tecnica.',
+  "Sviluppo software dal 2002: consulenza indipendente su progetti eterogenei, sette anni alla guida di un ISP wireless territoriale, poi backend .NET e architettura di sistema su piattaforme enterprise, IoT e legal-tech.",
+  "Oggi porto questa esperienza dentro le PMI e gli enti: capire dove l'AI serve davvero, costruirla con un metodo verificabile e, dove esistono, finanziarla con le misure pubbliche. Lavoro come direzione tecnica esterna continuativa (Fractional CTO) oppure su progetti circoscritti.",
+  "Il codice resta testabile e documentato per default. Dal 2024 uso quotidianamente strumenti AI/LLM nel ciclo di sviluppo e ho portato in produzione modelli di machine learning \"classici\" e fine-tuning di modelli vision.",
+  "Sono a Reggio Calabria e lavoro da remoto, con presenza in sede quando serve.",
 ];
 
-const pageTitle = 'Gaetano Luigi Matteo Cardinale — Senior .NET / Software Architect';
-const pageDesc = '23 anni di sviluppo software. C# 13 / .NET 10, ASP.NET Core, Blazor, EF Core, Azure, Kubernetes. Architetture enterprise, piattaforme IoT, legal-tech, healthtech.';
+const offerta: { titolo: string; testo: string }[] = [
+  { titolo: "AI dentro l'azienda", testo: "Individuo i processi in cui l'AI produce un risultato misurabile e li realizzo: automazione di documenti e flussi, analisi dei dati, assistenti interni con fonti controllate." },
+  { titolo: "Progetti finanziati", testo: "Cerco le misure pubbliche (nazionali e regionali) compatibili con il progetto e preparo la documentazione, in modo che l'investimento non gravi interamente sul bilancio." },
+  { titolo: "Fractional CTO", testo: "Direzione tecnica esterna continuativa: strategia IT, governo dei fornitori, sicurezza e conformità (NIS2, GDPR), architettura dei dati e del software." },
+];
+
+const metodo: { titolo: string; testo: string }[] = [
+  { titolo: "Profilo", testo: "Si parte dall'azienda: settore, dimensione, sede, investimenti in programma, vincoli. Senza un profilo preciso ogni ricerca è generica." },
+  { titolo: "Ricerca in parallelo su fonti ufficiali", testo: "Più linee di ricerca indipendenti, ciascuna ancorata a fonti primarie: bandi, norme, atti degli enti. Niente sentito dire." },
+  { titolo: "Verifica indipendente", testo: "Ogni dato rilevante viene ricontrollato da un secondo passaggio separato dal primo, che deve ritrovare la fonte. Ciò che non regge viene scartato." },
+  { titolo: "Selezione ragionata", testo: "Si tengono le opzioni davvero percorribili. Le altre restano nel documento con il motivo dell'esclusione, così la scelta è ripercorribile." },
+  { titolo: "Documenti pronti", testo: "Il risultato è un set di documenti utilizzabili: schede, scadenze, requisiti, passi successivi. Non una presentazione da interpretare." },
+];
+
+const pageTitle = 'Consulenza AI e software per le PMI · Fractional CTO — Gaetano Luigi Matteo Cardinale';
+const pageDesc = "Consulenza AI e software per le PMI: portare l'AI in azienda con un metodo verificabile, progetti finanziati con le misure pubbliche, Fractional CTO. 23 anni di esperienza .NET e Azure.";
 ---
 <Base title={pageTitle} description={pageDesc}>
   <!-- HERO -->
   <header class="hero">
     <div class="wrap">
-      <h1>Gaetano Luigi Matteo Cardinale</h1>
-      <p class="role">Senior .NET / Software Architect · Fractional CTO</p>
+      <p class="brand"><img src={`${base}logo-gc.svg`} alt="" width="36" height="36" /> Gaetano Luigi Matteo Cardinale</p>
+      <h1>Consulenza AI e software per le PMI</h1>
+      <p class="role">Fractional CTO</p>
       <p class="tagline">
-        Costruisco e mantengo software enterprise da 23 anni: gestionali modulari multi-database,
-        piattaforme IoT, sistemi legal-tech e healthtech — dall'architettura al codice all'infrastruttura.
+        Porto l'intelligenza artificiale dentro le aziende con un metodo in cui ogni dato ha una fonte
+        primaria e una verifica indipendente: il "secondo cervello aziendale". Dove possibile, il progetto
+        si finanzia con le misure pubbliche.
       </p>
       <div class="contacts">
         <a href="mailto:gcardinale@protonmail.com">✉ gcardinale@protonmail.com</a>
         <a href="tel:+393277549296">☎ +39 327 754 9296</a>
         <a class="ghost" href="https://www.linkedin.com/in/gaetano-cardinale-81350a17a/" target="_blank" rel="noopener">in LinkedIn</a>
       </div>
-      <p class="note">CV completo disponibile su richiesta — scrivimi e te lo invio.</p>
+      <p class="note">Alle spalle 23 anni di sviluppo software (.NET, Azure). CV completo su richiesta.</p>
     </div>
   </header>
 
+  <!-- COSA FACCIO -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <p class="eyebrow">Cosa faccio</p>
+      <div class="steps cols">
+        {offerta.map((o) => (
+          <div class="step">
+            <h3>{o.titolo}</h3>
+            <p>{o.testo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COME LAVORO -->
+  <section class="section" id="come-lavoro">
+    <div class="wrap">
+      <p class="eyebrow">Come lavoro</p>
+      <p style="margin-top:0;">Lo stesso metodo vale per la ricerca di incentivi e per l'analisi tecnica: si parte dai fatti, si controllano, si motiva ogni scelta.</p>
+      <ol class="steps">
+        {metodo.map((m) => (
+          <li class="step">
+            <h3>{m.titolo}</h3>
+            <p>{m.testo}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
   <!-- CHI SONO -->
-  <section class="section">
+  <section class="section section--alt">
     <div class="wrap prose">
       <p class="eyebrow">Chi sono</p>
       {about.map((p) => <p>{p}</p>)}
@@ -67,7 +115,7 @@ const pageDesc = '23 anni di sviluppo software. C# 13 / .NET 10, ASP.NET Core, B
   </section>
 
   <!-- COMPETENZE -->
-  <section class="section section--alt">
+  <section class="section">
     <div class="wrap">
       <p class="eyebrow">Competenze</p>
       <div class="skills">
@@ -123,13 +171,13 @@ const pageDesc = '23 anni di sviluppo software. C# 13 / .NET 10, ASP.NET Core, B
   <section class="section">
     <div class="wrap">
       <p class="eyebrow">Contatti</p>
-      <p>Per qualsiasi confronto — opportunità da dipendente o in consulenza, scambio tecnico — scrivimi:</p>
+      <p>Per capire se e dove l'AI può servire alla tua azienda, scrivimi o chiamami:</p>
       <div class="contacts">
         <a href="mailto:gcardinale@protonmail.com">✉ gcardinale@protonmail.com</a>
         <a href="tel:+393277549296">☎ +39 327 754 9296</a>
         <a class="ghost" href="https://www.linkedin.com/in/gaetano-cardinale-81350a17a/" target="_blank" rel="noopener">in LinkedIn</a>
       </div>
-      <p class="note">CV completo su richiesta.</p>
+      <p class="note">Il CV completo si invia su richiesta.</p>
     </div>
   </section>
 

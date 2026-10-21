@@ -43,5 +43,4 @@ Far parlare un backend cloud con hardware telematico reale, in modo affidabile e
 
 - Piattaforma in produzione su flotte reali; app mobile pubblicata su store.
 - Ordine di grandezza del codice (sola versione attuale): ~1.185 file C# e ~280 file di test, ~250 commit in tre mesi — sviluppo da un singolo sviluppatore.
-- Valutazione interna dell'asset software: nell'ordine di alcune centinaia di migliaia di euro (costo di sviluppo equivalente per un team), con potenziale di prodotto SaaS sensibilmente superiore.
 - Quattro iterazioni complete della piattaforma sviluppate nell'arco di circa nove mesi, con pivot tecnici rapidi guidati dall'evoluzione dell'hardware e dei requisiti.

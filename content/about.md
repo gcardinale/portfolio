@@ -8,4 +8,4 @@ Oggi lavoro principalmente in C# / .NET su soluzioni enterprise: gestionali modu
 
 Lavoro in contesti Agile, con esperienza diretta sia lato azienda sia come libero professionista su mandati continuativi (incluso un ruolo di Fractional CTO). Dal 2024 uso quotidianamente strumenti AI/LLM come acceleratore nel ciclo di sviluppo, e ho portato in produzione modelli ML "classici" e fine-tuning di modelli vision.
 
-Vivo a Reggio Calabria e lavoro da remoto (o ibrido leggero). Mi interessano ruoli — da dipendente o in consulenza — su prodotto, stack moderno, con autonomia tecnica.
+Sono a Reggio Calabria e lavoro da remoto, con presenza in sede quando serve. Lavoro come consulente: direzione tecnica esterna (Fractional CTO) e progetti di AI per le PMI.

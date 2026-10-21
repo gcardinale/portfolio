@@ -1,6 +1,6 @@
 ---
 title: Piattaforma legal-tech per un'associazione di tutela dei consumatori
-order: 2
+order: 3
 role: Software Architect (freelance, end-to-end)
 period: in corso (dal 2019)
 sector: Associazione nazionale di tutela dei consumatori

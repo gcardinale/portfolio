@@ -1,11 +1,11 @@
 ---
 title: Piattaforma SaaS di telemedicina — settore sanitario
-order: 4
+order: 5
 role: Software & Infrastructure Architect (freelance)
 period: 2023–2025
 sector: Azienda operante nel settore sanitario (telemedicina)
 status: concluso
-summary: Piattaforma SaaS per telemedicina per medici di medicina generale. Cluster Kubernetes self-hosted su 4 nodi, SLA 99,99% sostenuto per 2,5 anni, infrastruttura a €55/mese, dimensionata per scalare a 200+ medici senza nuovi nodi.
+summary: Piattaforma SaaS per telemedicina per medici di medicina generale. Cluster Kubernetes self-hosted su 4 nodi, SLA 99,99% sostenuto per 2,5 anni, infrastruttura a 55 euro al mese, dimensionata per scalare a 200+ medici senza nuovi nodi.
 stack:
   - backend .NET
   - MySQL
@@ -39,6 +39,6 @@ Backend .NET, MySQL, Kubernetes self-hosted (4 nodi), app mobile Flutter / Xamar
 ## Risultati
 
 - **SLA 99,99%** sostenuto per 2,5 anni; zero incidenti di service disruption nella vita operativa.
-- **Costo infrastruttura: €55/mese fissi**; costo marginale per medico a saturazione nell'ordine di pochi euro l'anno — un ordine di grandezza sotto le alternative cloud-managed.
+- **Costo infrastruttura: 55 euro al mese fissi**; costo marginale per medico a saturazione nell'ordine di pochi euro l'anno — un ordine di grandezza sotto le alternative cloud-managed.
 - Fino a ~19 medici di medicina generale attivi al picco; circa 38.000 pazienti serviti dal sistema.
 - Un case study tecnico dedicato (architettura del cluster, scelte FinOps) è disponibile su richiesta.

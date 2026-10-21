@@ -1,6 +1,6 @@
 ---
 title: Piattaforma logistica enterprise — settore trasporti e logistica
-order: 3
+order: 4
 role: IT Manager & Software Architect
 period: 2023–2025
 sector: Azienda operante nel settore dei trasporti e della logistica

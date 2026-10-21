@@ -67,6 +67,15 @@ const base = import.meta.env.BASE_URL;
       .contacts a.ghost { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
       .contacts a.ghost:hover { background: var(--accent-soft); }
       .note { font-size: 0.9rem; color: var(--muted); margin: 6px 0 0; }
+      .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--muted); margin: 0 0 22px; font-size: 0.95rem; }
+      .brand img { border-radius: 8px; }
+      .steps { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 14px; counter-reset: s; }
+      .steps.cols { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin: 0; }
+      .step { border: 1px solid var(--border); border-radius: 12px; background: #fff; padding: 16px 20px; }
+      ol.steps .step { counter-increment: s; position: relative; padding-left: 60px; }
+      ol.steps .step::before { content: counter(s); position: absolute; left: 18px; top: 16px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+      .step h3 { margin: 0 0 4px; font-size: 1.05rem; }
+      .step p { margin: 0; color: var(--text); font-size: 0.97rem; }
       /* generic prose */
       .prose p { margin: 0 0 16px; }
       .prose h2 { font-size: 1.4rem; margin: 32px 0 12px; }
